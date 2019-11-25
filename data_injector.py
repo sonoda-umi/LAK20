@@ -8,7 +8,7 @@ conn = sqlite3.connect(db_path)
 c = conn.cursor()
 
 c.execute('''CREATE TABLE event_stream
-             (user_id text,course_id text,material_id text,operation_name text,page_no real,marker text,memo_length real,devicecode text,eventtime text)''')
+             (course_id text,user_id text,material_id text,operation_name text,page_no real,marker text,memo_length real,devicecode text,eventtime text)''')
 c.execute('''CREATE TABLE lecture_detail
              (course_id text, lecture_serial real, material_id text, material_pages real, start_time text,end_time text)''')
 # conn.commit()
