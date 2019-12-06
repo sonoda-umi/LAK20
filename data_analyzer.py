@@ -8,7 +8,7 @@ data_path = 'data/Train'
 db_path = 'database/lak20.db'
 
 
-def polynomial_fitter(material_id, course_id,start_variance, cut_down_variance):
+def polynomial_fitter(material_id, course_id, start_variance, cut_down_variance,is_plot,is_save):
     conn = sqlite3.connect(db_path)
     c = conn.cursor()
 
@@ -91,6 +91,11 @@ def polynomial_fitter(material_id, course_id,start_variance, cut_down_variance):
     print(Loss_list)
     print("The minimum loss power is:%d" % (Loss_list.index(min(Loss_list)) + 1))
     ax1.legend()
-    plt.savefig("%s_%s.png" % (material_id, course_id))
-    plt.show()
+    if is_save:
+        plt.savefig("%s_%s.png" % (material_id, course_id))
+    if is_plot:
+        plt.show()
+    return z,max_app
 
+
+polynomial_fitter('e18eedce0b', '24a65f29b6', 100, 100,False,True)
