@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-db_path = 'database/lak20.db'
+db_path = 'database/database.db'
 
 conn = sqlite3.connect(db_path)
 c = conn.cursor()

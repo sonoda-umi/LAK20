@@ -4,8 +4,8 @@ import datetime
 from matplotlib import pyplot as plt
 import numpy as np
 
-data_path = 'data/Train'
-db_path = 'database/lak20.db'
+# data_path = 'data/Train'
+db_path = 'database/database.db'
 
 
 def polynomial_fitter(material_id, course_id, start_variance, cut_down_variance,is_plot,is_save):
@@ -19,6 +19,7 @@ def polynomial_fitter(material_id, course_id, start_variance, cut_down_variance,
     c.execute("SELECT * FROM lecture_detail where material_id='%s' and course_id='%s'" % (material_id, course_id))
     lecture_details = c.fetchone()
     event_stream['eventtime'] = pd.to_datetime(event_stream['eventtime'])
+    print(lecture_details)
     start_time = lecture_details[4]
     end_time = lecture_details[5]
     start_time = datetime.datetime.strptime(start_time, '%Y-%m-%d %H:%M:%S')
