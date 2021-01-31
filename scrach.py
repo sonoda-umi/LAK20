@@ -1,5 +1,5 @@
 import sqlite3
-import data_analyzer
+# import data_analyzer
 import datetime
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -17,7 +17,7 @@ for material_id in material_list:
     course_list = c.fetchall()
     for course_id in course_list:
         print(material_id[0] + "_" + course_id[0])
-        poly_arr, max_app_arr = data_analyzer.polynomial_fitter(material_id[0], course_id[0], 100, 100, False, False)
+        # poly_arr, max_app_arr = data_analyzer.polynomial_fitter(material_id[0], course_id[0], 100, 100, False, False)
 
         # Get event stream again
         event_stream = pd.read_sql(
@@ -41,7 +41,7 @@ for material_id in material_list:
         op_time_list = list(range(int(max_op_time + 1)))
         fig1 = plt.figure(figsize=(15, 10))
         app_list = np.zeros(int(page_count))
-        reference_arr = max_app_arr
+        # reference_arr = max_app_arr
 
         threshold = 2
         duration_threshold = 20
@@ -63,8 +63,10 @@ for material_id in material_list:
                 page_loc = page_no_list[index]
                 op_time = operation_time_list[index]
                 if counting:
-                    if page_loc >= reference_arr[int(op_time) - 1] - threshold:
-                        counting = False
+                    if False:
+                        pass
+                    # if page_loc >= reference_arr[int(op_time) - 1] - threshold:
+                    #     counting = False
                     else:
                         # Do the counting in page array
                         if 0 < index < len(page_no_list) - 1:
@@ -92,7 +94,8 @@ for material_id in material_list:
                                 print(index)
                         pass
                 else:
-                    if page_loc < reference_arr[int(op_time) - 1] - threshold:
+                    if True:
+                    # if page_loc < reference_arr[int(op_time) - 1] - threshold:
                         counting = True
             print(valid_pages)
             app_list += valid_pages
